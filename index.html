@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>單字庫查詢器</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Vocabulary Builder</p>
+            <h1>單字庫查詢器</h1>
+          </div>
+          <div class="actions">
+            <button id="exportCsvBtn" class="secondary" type="button">匯出 CSV</button>
+            <button id="clearBtn" class="ghost" type="button">清空</button>
+          </div>
+        </header>
+
+        <section class="lookup-panel" aria-label="單字查詢">
+          <form id="lookupForm" class="lookup-form">
+            <label for="wordInput">輸入不會的單字</label>
+            <div class="lookup-row">
+              <input id="wordInput" name="word" type="text" autocomplete="off" placeholder="例如 insist" />
+              <button id="lookupBtn" type="submit">查詢</button>
+            </div>
+          </form>
+          <p id="statusText" class="status">資料會存在這台電腦的瀏覽器裡，可隨時匯出。</p>
+        </section>
+
+        <section id="resultPanel" class="result-panel is-empty" aria-live="polite">
+          <div class="empty-state">
+            <h2>先查一個單字</h2>
+            <p>查詢後可以改中文與搭配詞，再加入下方單字庫。</p>
+          </div>
+
+          <div class="result-editor" hidden>
+            <div class="result-head">
+              <div>
+                <p class="eyebrow">查詢結果</p>
+                <h2 id="resultWord">insist</h2>
+              </div>
+              <button id="addWordBtn" type="button">加入單字庫</button>
+            </div>
+
+            <div class="editor-grid">
+              <label>
+                中文意思
+                <input id="meaningInput" type="text" placeholder="堅持" />
+              </label>
+              <label>
+                搭配詞
+                <input id="collocationInput" type="text" placeholder="insist on = 堅持；insist that = 堅持認為" />
+              </label>
+              <label>
+                詞性
+                <input id="partInput" type="text" placeholder="verb" />
+              </label>
+              <label>
+                英文解釋
+                <textarea id="definitionInput" rows="3" placeholder="to say firmly that something is true"></textarea>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="library-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Saved Words</p>
+              <h2>我的單字庫</h2>
+            </div>
+            <input id="filterInput" class="filter" type="search" placeholder="搜尋已存單字" />
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>單字</th>
+                  <th>中文</th>
+                  <th>搭配詞</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="libraryBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pos-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Part of Speech</p>
+              <h2>詞性中文對照</h2>
+            </div>
+          </div>
+          <div class="pos-grid" aria-label="詞性中文對照表">
+            <div><strong>noun</strong><span>名詞</span></div>
+            <div><strong>verb</strong><span>動詞</span></div>
+            <div><strong>adjective</strong><span>形容詞</span></div>
+            <div><strong>adverb</strong><span>副詞</span></div>
+            <div><strong>preposition</strong><span>介系詞</span></div>
+            <div><strong>conjunction</strong><span>連接詞</span></div>
+            <div><strong>pronoun</strong><span>代名詞</span></div>
+            <div><strong>phrase</strong><span>片語</span></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
